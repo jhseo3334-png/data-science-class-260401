@@ -1,94 +1,84 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
 
-st.title("🎈 Streamlit 요소들 예시 페이지")
+# 페이지 제목
+st.title("👋 자기 소개 페이지")
 
-st.header("1. 텍스트 요소들")
-st.write("이것은 `st.write()`로 작성된 일반 텍스트입니다.")
-st.markdown("**이것은 `st.markdown()`으로 작성된 마크다운 텍스트입니다.**")
-st.text("이것은 `st.text()`로 작성된 일반 텍스트입니다.")
-st.code("""
-def hello():
-    print("Hello, Streamlit!")
-""")
+# 프로필 섹션
+st.header("프로필")
 
-st.header("2. 입력 위젯들")
-if st.button("버튼 클릭"):
-    st.success("버튼이 클릭되었습니다!")
+col1, col2 = st.columns([1, 2])
 
-checkbox = st.checkbox("체크박스")
-if checkbox:
-    st.info("체크박스가 선택되었습니다.")
-
-radio = st.radio("라디오 버튼 선택", ["옵션 1", "옵션 2", "옵션 3"])
-st.write(f"선택된 라디오: {radio}")
-
-select = st.selectbox("셀렉트박스 선택", ["항목 A", "항목 B", "항목 C"])
-st.write(f"선택된 항목: {select}")
-
-slider = st.slider("슬라이더", min_value=0, max_value=100, value=50)
-st.write(f"슬라이더 값: {slider}")
-
-text_input = st.text_input("텍스트 입력", placeholder="여기에 입력하세요")
-st.write(f"입력된 텍스트: {text_input}")
-
-text_area = st.text_area("텍스트 영역", height=100)
-st.write(f"입력된 텍스트 영역: {text_area}")
-
-st.header("3. 데이터 표시")
-df = pd.DataFrame({
-    '이름': ['Alice', 'Bob', 'Charlie'],
-    '나이': [25, 30, 35],
-    '점수': [85, 90, 95]
-})
-st.dataframe(df)
-st.table(df)
-
-st.header("4. 차트")
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=['A', 'B', 'C'])
-st.line_chart(chart_data)
-st.bar_chart(chart_data)
-
-st.header("5. 레이아웃 요소들")
-col1, col2, col3 = st.columns(3)
 with col1:
-    st.write("컬럼 1")
+    # 프로필 사진 (사용자가 자신의 사진 URL이나 경로로 변경 가능)
+    st.image("https://via.placeholder.com/150", caption="프로필 사진", width=150)
+
 with col2:
-    st.write("컬럼 2")
-with col3:
-    st.write("컬럼 3")
+    st.subheader("이름: [여기에 이름을 입력하세요]")
+    st.write("**직업:** [여기에 직업을 입력하세요]")
+    st.write("**간단한 소개:** [여기에 자신을 소개하는 짧은 문장을 입력하세요. 예: 열정적인 데이터 과학자입니다.]")
 
-with st.expander("확장 가능한 섹션"):
-    st.write("이 내용은 확장할 때 나타납니다.")
-    st.image("https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png", width=200)
+# 기술 스킬 섹션
+st.header("💻 기술 스킬")
+skills = [
+    "Python",
+    "데이터 분석",
+    "머신러닝",
+    "Streamlit",
+    "SQL",
+    "Pandas",
+    "NumPy"
+]  # 이 리스트를 자신의 스킬로 변경하세요
 
-st.header("6. 사이드바")
-st.sidebar.title("사이드바")
-st.sidebar.write("이것은 사이드바입니다.")
-sidebar_select = st.sidebar.selectbox("사이드바 선택", ["옵션 X", "옵션 Y"])
-st.sidebar.write(f"사이드바에서 선택된: {sidebar_select}")
+for skill in skills:
+    st.write(f"- {skill}")
 
-st.header("7. 미디어 요소들")
-st.image("https://streamlit.io/images/brand/streamlit-logo-secondary-colormark-darktext.png", caption="Streamlit 로고")
-st.audio("https://www.soundjay.com/misc/sounds/bell-ringing-05.wav")
-st.video("https://www.w3schools.com/html/mov_bbb.mp4")
+# 경력 섹션
+st.header("🏢 경력")
+st.write("**회사명:** [회사 이름을 입력하세요]")
+st.write("**직책:** [직책을 입력하세요]")
+st.write("**기간:** [근무 기간을 입력하세요]")
+st.write("**주요 업무:** [주요 업무를 간단히 설명하세요]")
 
-st.header("8. 진행 표시줄과 상태")
-progress_bar = st.progress(0)
-for i in range(100):
-    progress_bar.progress(i + 1)
-st.success("완료되었습니다!")
+# 추가 경력이 있다면 아래에 더 추가할 수 있어요
+# st.write("**회사명2:** [회사2]")
+# st.write("**직책2:** [직책2]")
+# 등
 
-st.header("9. 파일 업로드")
-uploaded_file = st.file_uploader("파일을 업로드하세요")
-if uploaded_file is not None:
-    st.write("업로드된 파일:", uploaded_file.name)
+# 학력 섹션
+st.header("🎓 학력")
+st.write("**학교:** [학교 이름을 입력하세요]")
+st.write("**전공:** [전공을 입력하세요]")
+st.write("**졸업년도:** [졸업년도를 입력하세요]")
 
-st.header("10. 다운로드 버튼")
-st.download_button(
-    label="샘플 데이터 다운로드",
-    data=df.to_csv(index=False),
-    file_name="sample_data.csv",
-    mime="text/csv"
-)
+# 추가 학력이 있다면 아래에 더 추가
+# st.write("**학교2:** [학교2]")
+
+# 관심사 또는 취미 섹션 (선택사항)
+st.header("🎨 관심사")
+interests = [
+    "데이터 시각화",
+    "오픈소스 프로젝트",
+    "여행",
+    "독서"
+]  # 자신의 관심사로 변경하세요
+
+for interest in interests:
+    st.write(f"- {interest}")
+
+# 연락처 섹션
+st.header("📞 연락처")
+st.write("**이메일:** [이메일 주소를 입력하세요]")
+st.write("**LinkedIn:** [LinkedIn 프로필 링크]")
+st.write("**GitHub:** [GitHub 프로필 링크]")
+st.write("**포트폴리오:** [포트폴리오 사이트 링크, 있다면]")
+
+# 사이드바 (추가 메뉴)
+st.sidebar.title("메뉴")
+st.sidebar.write("이곳에 추가 메뉴를 넣을 수 있어요.")
+st.sidebar.write("- [프로젝트 보기]")
+st.sidebar.write("- [블로그]")
+st.sidebar.write("- [연락하기]")
+
+# 푸터
+st.markdown("---")
+st.write("© 2024 [이름]. 모든 권리 보유.")
