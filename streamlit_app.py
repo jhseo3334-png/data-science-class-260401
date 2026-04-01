@@ -13,10 +13,9 @@ with col1:
     st.image("https://via.placeholder.com/150", caption="프로필 사진", width=150)
 
 with col2:
-    st.subheader("이름: [여기에 이름을 입력하세요]")
-    st.write("**직업:** [여기에 직업을 입력하세요]")
-    st.write("**간단한 소개:** [여기에 자신을 소개하는 짧은 문장을 입력하세요. 예: 열정적인 데이터 과학자입니다.]")
-
+    st.subheader("이름: [서지형]")
+    st.write("**직업:** [교사]")
+    st.write("**간단한 소개:** [아이들을 좋아하는 교사입니다]")
 # 기술 스킬 섹션
 st.header("💻 기술 스킬")
 skills = [
