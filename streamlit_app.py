@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 페이지 제목
-st.title("👋 자기 소개 페이지")
+st.markdown("<h1 style='text-align: center; color: #4CAF50; font-family: Georgia; font-size: 40px;'>👋 자기 소개 페이지</h1>", unsafe_allow_html=True)
 
 # 프로필 섹션
 st.header("프로필")
@@ -15,7 +15,7 @@ with col1:
 with col2:
     st.subheader("이름: [서지형]")
     st.write("**직업:** [교사]")
-    st.write("**간단한 소개:** [아이들을 좋아하는 교사입니다]")
+    st.markdown("<p style='font-family: Georgia; font-size: 18px; color: #555;'>아이들을 사랑하는 열정적인 교사로, 교육을 통해 미래를 밝히는 꿈을 키우고 있습니다. 학생들의 잠재력을 믿고, 함께 성장하는 여정을 즐깁니다.</p>", unsafe_allow_html=True)
 
 # 학력 섹션
 st.header("🎓 학력")
